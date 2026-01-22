@@ -14,10 +14,12 @@
 .form-controls {
   display: flex;
   justify-content: end;
+  gap: 1rem;
 }
 
 .form-input[type="text"] {
-  padding: 0.5rem;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
   border-radius: 6px;
   background-color: var(--surface-bg-color);
   color: var(--surface-text-color);
@@ -25,6 +27,7 @@
 }
 
 .form-input[type="submit"] {
+  font-size: 1rem;
   padding: 0.5rem 1rem;
   border-radius: 6px;
   background-color: var(--surface-bg-color);
@@ -48,4 +51,14 @@
 
 .form-input[type="file"]::file-selector-button:hover {
   background-color: var(--bg-color);
+}
+
+.form-input.form-error {
+  color: var(--error-text-color);
+  border-color: var(--error-text-color);
+}
+
+.form-input.form-success {
+  color: var(--success-text-color);
+  border-color: var(--success-text-color);
 }

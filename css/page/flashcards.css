@@ -1,0 +1,22 @@
+@import "../component/theme.css";
+@import "../component/form.css";
+
+body {
+  max-width: 600px;
+  margin: 4rem auto;
+}
+
+.navigation {
+  font-size: 1rem;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  background-color: var(--surface-bg-color);
+  color: var(--surface-text-color);
+  border: solid 1px var(--surface-text-color);
+}
+
+.navigation:hover {
+  background-color: var(--bg-color);
+  cursor: pointer;
+}

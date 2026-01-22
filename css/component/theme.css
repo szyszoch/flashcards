@@ -3,6 +3,10 @@
   --text-color: #000000;
   --surface-text-color: #000000;
   --surface-bg-color: #ffffff;
+  --error-text-color: #ee1111;
+  --error-bg-color: #ee8888;
+  --success-text-color: #11ee11;
+  --success-bg-color: #88ee88;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -11,6 +15,10 @@
     --text-color: #ffffff;
     --surface-text-color: #ffffff;
     --surface-bg-color: #000000;
+    --error-text-color: #ee1111;
+    --error-bg-color: #ee8888;
+    --success-text-color: #11ee11;
+    --success-bg-color: #88ee88;
   }
 }
 

@@ -1,0 +1,37 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flashcards</title>
+    <link rel="stylesheet" href="../css/page/flashcards.css" />
+    <script src="../js/page/flashcards.js" defer></script>
+  </head>
+
+  <body>
+    <main>
+      <section>
+        <p id="question"></p>
+        <p id="feedback"></p>
+
+        <form id="form">
+          <div class="form-group">
+            <label class="form-label">Answer</label>
+            <input id="answer" class="form-input" type="text" />
+          </div>
+
+          <div class="form-controls">
+            <a class="navigation" href="index.html">Quit</a>
+            <input
+              id="submitInput"
+              class="form-input"
+              type="submit"
+              value="Submit answer"
+            />
+          </div>
+        </form>
+      </section>
+    </main>
+  </body>
+</html>
