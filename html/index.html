@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Flashcards</title>
     <link rel="stylesheet" href="../css/page/index.css" />
+    <script src="../js/page/index.js" defer></script>
   </head>
 
   <body>
@@ -19,33 +20,75 @@
         flashcards from csv and start learning.
       </p>
 
-      <form action="flashcards.html">
-        <div class="form-group">
-          <label class="form-label" for="file">File with flashcards data</label>
-          <input
-            class="form-input"
-            id="file"
-            required
-            type="file"
-            accept=".csv"
-          />
-        </div>
+      <section>
+        <header>
+          <h2>Upload</h2>
+        </header>
 
-        <div class="form-group">
-          <label class="form-label" for="separator">Separator</label>
-          <input
-            class="form-input"
-            id="separator"
-            required
-            type="text"
-            value=";"
-          />
-        </div>
+        <form action="flashcards.html">
+          <div class="form-group">
+            <label class="form-label" for="file"
+              >File with flashcards data</label
+            >
+            <input
+              class="form-input"
+              id="file"
+              required
+              type="file"
+              accept=".csv"
+            />
+          </div>
 
-        <div class="form-controls">
-          <input class="form-input" type="submit" value="Learn" />
-        </div>
-      </form>
+          <div class="form-group">
+            <label class="form-label" for="separator">Separator</label>
+            <input
+              class="form-input"
+              id="separator"
+              required
+              type="text"
+              value=";"
+            />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label"
+              >Order in which columns should be interpreted</label
+            >
+            <label>
+              <input
+                class="form-input"
+                name="order"
+                required
+                type="radio"
+                value="da"
+                checked
+              />
+              Definition - Answer
+            </label>
+            <label>
+              <input
+                class="form-input"
+                name="order"
+                required
+                type="radio"
+                value="ad"
+              />
+              Answer - Definition
+            </label>
+          </div>
+
+          <div class="form-controls">
+            <input class="form-input" type="submit" value="Learn" />
+          </div>
+        </form>
+      </section>
+
+      <section>
+        <header>
+          <h2>Preview</h2>
+        </header>
+        <table id="preview"></table>
+      </section>
     </main>
   </body>
 </html>

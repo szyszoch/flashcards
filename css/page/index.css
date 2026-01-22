@@ -3,5 +3,18 @@
 
 body {
   max-width: 600px;
-  margin: auto;
+  margin: 4rem auto;
+}
+
+table {
+  border-collapse: collapse;
+  border: solid 1px var(--surface-text-color);
+  background-color: var(--surface-bg-color);
+  width: 100%;
+}
+
+td,
+th {
+  border: solid 1px var(--surface-text-color);
+  padding: 0.5rem;
 }
