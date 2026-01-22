@@ -1,0 +1,7 @@
+@import "../component/theme.css";
+@import "../component/form.css";
+
+body {
+  max-width: 600px;
+  margin: auto;
+}

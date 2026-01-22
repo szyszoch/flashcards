@@ -1,0 +1,51 @@
+@import "../component/theme.css";
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.form-label {
+  margin-bottom: 0.25rem;
+  font-size: 0.75rem;
+}
+
+.form-controls {
+  display: flex;
+  justify-content: end;
+}
+
+.form-input[type="text"] {
+  padding: 0.5rem;
+  border-radius: 6px;
+  background-color: var(--surface-bg-color);
+  color: var(--surface-text-color);
+  border: solid 1px var(--surface-text-color);
+}
+
+.form-input[type="submit"] {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  background-color: var(--surface-bg-color);
+  color: var(--surface-text-color);
+  border: solid 1px var(--surface-text-color);
+}
+
+.form-input[type="submit"]:hover {
+  background-color: var(--bg-color);
+  cursor: pointer;
+}
+
+.form-input[type="file"]::file-selector-button {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  border: 1px solid var(--surface-text-color);
+  background-color: var(--surface-bg-color);
+  color: var(--surface-text-color);
+  cursor: pointer;
+}
+
+.form-input[type="file"]::file-selector-button:hover {
+  background-color: var(--bg-color);
+}
