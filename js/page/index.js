@@ -32,7 +32,7 @@ file?.addEventListener("change", () =>
   uploadFiles(file.files?.[0], separator.value),
 );
 
-separator?.addEventListener("change", () =>
+separator?.addEventListener("input", () =>
   uploadFiles(file.files?.[0], separator.value),
 );
 
