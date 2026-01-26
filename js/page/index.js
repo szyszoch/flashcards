@@ -1,4 +1,5 @@
 import { Parser } from "../core/parser.js";
+import { renderFlashcardsTable } from "../ui/flashcard-table.js";
 
 function getOrderValue() {
   const checked = document.querySelector('input[name="order"]:checked');
@@ -7,31 +8,6 @@ function getOrderValue() {
 
 function saveFlashcardsData(flashcards) {
   sessionStorage.setItem("flashcards", JSON.stringify(flashcards));
-}
-
-function printPreview(flashcards) {
-  preview.innerHTML = "";
-
-  const thead = document.createElement("thead");
-  thead.innerHTML = `
-        <tr>
-            <th>Definition</th>
-            <th>Answer</th>
-        </tr>
-    `;
-
-  const tbody = document.createElement("tbody");
-
-  for (const flashcard of flashcards) {
-    const tr = document.createElement("tr");
-    tr.innerHTML = `
-            <td>${flashcard.definition}</td>
-            <td>${flashcard.answer}</td>
-        `;
-    tbody.appendChild(tr);
-  }
-
-  preview.append(thead, tbody);
 }
 
 function uploadFiles(file, separator) {
@@ -51,7 +27,7 @@ function uploadFiles(file, separator) {
       answerIndex,
     );
     saveFlashcardsData(parsed);
-    printPreview(parsed);
+    renderFlashcardsTable(preview, parsed);
   };
 }
 
