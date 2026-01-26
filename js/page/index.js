@@ -1,13 +1,10 @@
 import { Parser } from "../core/parser.js";
+import { Repository } from "../core/repository.js";
 import { renderFlashcardsTable } from "../ui/flashcard-table.js";
 
 function getOrderValue() {
   const checked = document.querySelector('input[name="order"]:checked');
   return checked?.value ?? "da";
-}
-
-function saveFlashcardsData(flashcards) {
-  sessionStorage.setItem("flashcards", JSON.stringify(flashcards));
 }
 
 function uploadFiles(file, separator) {
@@ -26,7 +23,7 @@ function uploadFiles(file, separator) {
       definitionIndex,
       answerIndex,
     );
-    saveFlashcardsData(parsed);
+    Repository.saveFlashcards(parsed);
     renderFlashcardsTable(preview, parsed);
   };
 }

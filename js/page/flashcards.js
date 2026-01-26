@@ -1,6 +1,6 @@
-const flashcards = JSON.parse(
-    sessionStorage.getItem("flashcards") ?? "[]"
-);
+import { Repository } from "../core/repository.js";
+
+const flashcards = Repository.loadFlashcards();
 
 if (!flashcards.length) {
     window.location.href = "index.html";
