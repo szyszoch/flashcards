@@ -1,43 +1,38 @@
+import { FlashcardCSVLayout } from "../core/flashcard-csv-layout.js";
 import { Parser } from "../core/parser.js";
 import { Repository } from "../core/repository.js";
 import { renderFlashcardsTable } from "../ui/flashcard-table.js";
 
-function getOrderValue() {
-  const checked = document.querySelector('input[name="order"]:checked');
-  return checked?.value ?? "da";
+const fileInput = document.getElementById("file");
+const separatorInput = document.getElementById("separator");
+const orderInputs = document.getElementsByName("order");
+const getCheckedOrder = () => (document.querySelector('input[name="order"]:checked'));
+
+let fileData = null;
+
+function updateFlashcards() {
+  if (fileData === null) return;
+
+  const flashcards = Parser.parseFlashcardsFromCSV(
+    fileData,
+    FlashcardCSVLayout.fromOrderString(getCheckedOrder()?.value ?? "da"),
+    separatorInput?.value,
+  ).filter((flashcard) => (flashcard != null));
+
+  Repository.saveFlashcards(flashcards);
+  renderFlashcardsTable(document.getElementById("preview"), flashcards);
 }
 
-function uploadFiles(file, separator) {
-  if (!file || !separator) {
-    return;
-  }
+function uploadFile() {
+  if (fileInput.files.length === 0) return;
   const reader = new FileReader();
-  reader.readAsText(file, "UTF-8");
+  reader.readAsText(fileInput.files[0], "UTF-8");
   reader.onload = ({ target }) => {
-    const order = getOrderValue();
-    const definitionIndex = order === "da" ? 0 : 1;
-    const answerIndex = order === "da" ? 1 : 0;
-    const parsed = Parser.parseFlashcardsFromCSV(
-      target.result,
-      separator,
-      definitionIndex,
-      answerIndex,
-    );
-    Repository.saveFlashcards(parsed);
-    renderFlashcardsTable(preview, parsed);
+    fileData = target.result.trim();
+    updateFlashcards();
   };
 }
 
-file?.addEventListener("change", () =>
-  uploadFiles(file.files?.[0], separator.value),
-);
-
-separator?.addEventListener("input", () =>
-  uploadFiles(file.files?.[0], separator.value),
-);
-
-document.querySelectorAll('input[name="order"]').forEach((radio) =>
-  radio.addEventListener("change", () => {
-    uploadFiles(file.files?.[0], separator.value);
-  }),
-);
+fileInput.addEventListener("change", uploadFile);
+separatorInput.addEventListener("input", updateFlashcards);
+orderInputs.forEach((radio) => radio.addEventListener("change", updateFlashcards));
